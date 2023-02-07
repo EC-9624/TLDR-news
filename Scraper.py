@@ -39,7 +39,7 @@ def remove_duplicates(list_of_dicts):
     return unique_list
 
 
-def pageScraper():
+def bbcPageScraper():
 
     for item in unique_list:
         r = requests.get(item['link'])
@@ -59,13 +59,15 @@ def remove_empty_dicts(list_of_dicts):
     return [d for d in list_of_dicts if all(d.get(k, "") != "" for k in keys_to_check)]
 
 
-def writeJson():
+def executeScraping():
+    print("executing Scraping....")
+    bbc_rss()
+    remove_duplicates(articles_list)
+    bbcPageScraper()
 
-    with open('data', 'w') as file:
-        file.write(json.dumps(remove_empty_dicts(unique_list), indent=2))
+    print("Scraping completed!")
 
 
-bbc_rss()
-remove_duplicates(articles_list)
-pageScraper()
-writeJson()
+executeScraping()
+
+final_list = remove_empty_dicts(unique_list)
