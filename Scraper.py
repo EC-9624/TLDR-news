@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import json
+
 
 articles_list = []
 unique_list = []
@@ -60,7 +60,7 @@ def remove_empty_dicts(list_of_dicts):
 
 
 def executeScraping():
-    print("executing Scraping....")
+    print("execute Scraping....")
     bbc_rss()
     remove_duplicates(articles_list)
     bbcPageScraper()

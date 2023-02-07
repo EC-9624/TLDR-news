@@ -4,6 +4,8 @@ import json
 from dotenv import load_dotenv
 from Scraper import final_list
 import time
+
+
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_KEY")
